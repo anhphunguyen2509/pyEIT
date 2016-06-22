@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>pyeit by liubenyuan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">pyeit</h1>
+      <h2 class="project-tagline">PyEIT: A Python implementation of Electrical Impedance Tomography</h2>
+      <a href="https://github.com/liubenyuan/pyEIT" class="btn">View on GitHub</a>
+      <a href="https://github.com/liubenyuan/pyEIT/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/liubenyuan/pyEIT/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="" class="anchor" href="#" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><img src="https://raw.githubusercontent.com/liubenyuan/pyEIT/master/figs/logo.png" alt="pyeit">
+</h1>
+
+<p><em>A python-based, open-source package for Electrical Impedance Tomography (EIT)</em></p>
+
+<p><strong>Principles: modularity, minimalism, easy extensibility!</strong></p>
+
+<h2>
+<a id="1-introduction" class="anchor" href="#1-introduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. Introduction</h2>
+
+<h3>
+<a id="11-dependencies" class="anchor" href="#11-dependencies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1.1 Dependencies</h3>
+
+<table>
+<thead>
+<tr>
+<th>Packages</th>
+<th>Optional</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>numpy</strong></td>
+<td></td>
+<td>tested with <code>numpy-1.10.4</code>, <code>numpy-1.11.rc1</code>
+</td>
+</tr>
+<tr>
+<td><strong>scipy</strong></td>
+<td></td>
+<td>tested with <code>scipy-0.17.0</code>
+</td>
+</tr>
+<tr>
+<td><strong>matplotlib</strong></td>
+<td></td>
+<td>tested with <code>matplotlib-1.5.1</code>
+</td>
+</tr>
+<tr>
+<td><strong>vispy</strong></td>
+<td><em>Optional</em></td>
+<td>tested with <code>vispy-git</code>
+</td>
+</tr>
+<tr>
+<td><strong>pandas</strong></td>
+<td><em>Optional</em></td>
+<td>tested with <code>pandas-0.17.1</code>
+</td>
+</tr>
+<tr>
+<td><strong>xarray</strong></td>
+<td><em>Optional</em></td>
+<td>for long term data analysis</td>
+</tr>
+<tr>
+<td><strong>distmesh</strong></td>
+<td><em>Optional</em></td>
+<td>it currently has a build-in distmesh module (supports 2D and 3D!)</td>
+</tr>
+<tr>
+<td><strong>tetgen</strong></td>
+<td><em>Optional</em></td>
+<td>generate 3D meshes</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Note 1, Why vispy ?</strong> <code>pyEIT</code> uses <code>vispy</code> for visualizing (optional) 3D meshes (tetrahedron). <code>vispy</code> has minimal system dependencies, all you need is a decent graphical card with <code>OpenGL</code> support. It supports fast rendering, which I think is more superior to <code>vtk</code> or <code>mayavi</code> especially for python 3 support. Please go to the website <a href="http://vispy.org/">vispy.org</a> or github repository <a href="https://github.com/vispy/vispy">vispy.github</a> for more details.</p>
+
+<p><strong>Note 2, How to contribute ?</strong> The interested user can contribute <strong>(create a PR! any type of improvement is welcome)</strong> forward simulation, inverse solving algorithms as well as their models at current stage. We will setup a wiki page dedicated to this topic.</p>
+
+<p><strong>Note 3, Fast setup.</strong> <a href="https://www.continuum.io/downloads">Anaconda from continuum</a> is highly recommended for this package. PyEIT is purely python and has minimal dependencies. It can be run directly on an existing anaconda environment (<code>python-2.7</code> and <code>python-3.5</code>).</p>
+
+<h3>
+<a id="12-features" class="anchor" href="#12-features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1.2 Features</h3>
+
+<ul>
+<li>2D forward and inverse computing of EIT</li>
+<li>Reconstruction algorithms : Gauss-Newton solver (JAC), Back-projection (BP), 2D GREIT</li>
+<li>2D/3D visualization!</li>
+<li>Add support for 3D forward and inverse computing</li>
+<li>3D mesh generation and visualization</li>
+<li>Generate complex shape using distmesh (TODO)</li>
+<li>More algorithms and data pre-processing modules (TODO)</li>
+<li>Complete electrode model (TODO)</li>
+</ul>
+
+<h2>
+<a id="2-installation" class="anchor" href="#2-installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. Installation</h2>
+
+<p><code>pyEIT</code> is purely python based (in current version), so it can be installed and run without any difficulty.</p>
+
+<h3>
+<a id="21-install-global" class="anchor" href="#21-install-global" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.1 Install global</h3>
+
+<pre><code>$ python setup.py build
+$ python setup.py install
+</code></pre>
+
+<h3>
+<a id="22-set-pythonpath-recommended" class="anchor" href="#22-set-pythonpath-recommended" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.2 set PYTHONPATH (recommended)</h3>
+
+<pre><code>export PYTHONPATH=/path/to/pyEIT
+</code></pre>
+
+<p>In windows, you may set <code>PYTHONPATH</code> as a system wide environment. If you are using <code>spyder-IDE</code>, or <code>pyCharm</code>, you may also set <code>PYTHONPATH</code> in the IDE, which is more convenient. Please refer to a specific tool for detailed information.</p>
+
+<h2>
+<a id="3-run-the-demo" class="anchor" href="#3-run-the-demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3. Run the demo</h2>
+
+<p>Enter the demo folder, pick one demo, and run !</p>
+
+<h3>
+<a id="31-2d-forward-and-inverse-computing" class="anchor" href="#31-2d-forward-and-inverse-computing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.1 (2D) forward and inverse computing</h3>
+
+<p><strong>Using</strong> <code>demo/demo_dynamic_bp.py</code></p>
+
+<p><img src="https://raw.githubusercontent.com/liubenyuan/pyEIT/master/figs/demo_bp.png" alt="demo_bp"></p>
+
+<p><strong>Using</strong> <code>demo/demo_dynamic_greit.py</code></p>
+
+<p><img src="https://raw.githubusercontent.com/liubenyuan/pyEIT/master/figs/demo_greit.png" alt="demo_greit"></p>
+
+<p><strong>Using</strong> <code>demo/demo_dynamic_jac.py</code></p>
+
+<p><img src="https://raw.githubusercontent.com/liubenyuan/pyEIT/master/figs/demo_jac.png" alt="demo_greit"></p>
+
+<p><strong>Using</strong> <code>demo/demo_static_jac.py</code></p>
+
+<p><img src="https://raw.githubusercontent.com/liubenyuan/pyEIT/master/figs/demo_static.png" alt="demo_static"></p>
+
+<h3>
+<a id="32-3d-forward-and-inverse-computing" class="anchor" href="#32-3d-forward-and-inverse-computing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.2 (3D) forward and inverse computing</h3>
+
+<p><strong>Using</strong> <code>demo/demo_forward3d.py</code></p>
+
+<p><strong>Using</strong> <code>demo/demo_dynamic_jac3d.py</code></p>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li>The 3D visualization can be adjusted using mouse wheels interactively. Seeking a perfect visualization mode, transparency or opaque, is in fact an individual taste. User can also use <code>mayavi</code> and <code>vtk</code> for visualization purpose.</li>
+<li>Solving the inverse problem of 3D EIT, requires the electrodes to be placed at multiple altitude (z-axis) in order to have (better) z-resolution. This should be done carefully, as adding extra z-belt introduces more excitation patterns, which in turn adds more computational loads.</li>
+</ul>
+
+<h2>
+<a id="4-contribute-to-pyeit-" class="anchor" href="#4-contribute-to-pyeit-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4. Contribute to pyEIT !</h2>
+
+<p>Give a <strong>star</strong>, <strong>fork</strong> and commit a pull request <strong>(PR)</strong> !</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/liubenyuan/pyEIT">pyeit</a> is maintained by <a href="https://github.com/liubenyuan">liubenyuan</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
